@@ -1,0 +1,116 @@
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Ecostayz — Deep Forest + Warm Earth palette */
+    --background: 0.97 0.012 88;
+    --foreground: 0.17 0.042 145;
+
+    --card: 0.99 0.006 88;
+    --card-foreground: 0.17 0.042 145;
+
+    --popover: 0.99 0.006 88;
+    --popover-foreground: 0.17 0.042 145;
+
+    --primary: 0.32 0.11 145;
+    --primary-foreground: 0.97 0.012 88;
+
+    --secondary: 0.91 0.025 90;
+    --secondary-foreground: 0.25 0.06 145;
+
+    --muted: 0.93 0.018 140;
+    --muted-foreground: 0.48 0.055 145;
+
+    --accent: 0.63 0.145 75;
+    --accent-foreground: 0.12 0.03 60;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.97 0.012 88;
+
+    --border: 0.87 0.03 140;
+    --input: 0.87 0.03 140;
+    --ring: 0.32 0.11 145;
+
+    --radius: 0.75rem;
+
+    --chart-1: 0.55 0.14 145;
+    --chart-2: 0.63 0.145 75;
+    --chart-3: 0.45 0.12 175;
+    --chart-4: 0.72 0.1 100;
+    --chart-5: 0.38 0.09 210;
+
+    --sidebar: 0.97 0.012 88;
+    --sidebar-foreground: 0.17 0.042 145;
+    --sidebar-primary: 0.32 0.11 145;
+    --sidebar-primary-foreground: 0.97 0.012 88;
+    --sidebar-accent: 0.91 0.025 90;
+    --sidebar-accent-foreground: 0.25 0.06 145;
+    --sidebar-border: 0.87 0.03 140;
+    --sidebar-ring: 0.32 0.11 145;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .section-fade {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .noise-overlay {
+    position: relative;
+  }
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+}
